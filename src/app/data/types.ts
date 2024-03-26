@@ -8,3 +8,6 @@ export interface Pokemon {
   sprites: { front_default: string };
   name:string;
 }
+
+//@todo:maybe it should be enum
+export type SortKeys = 'name' | 'id';

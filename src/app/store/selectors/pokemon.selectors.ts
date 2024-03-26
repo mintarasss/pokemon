@@ -13,3 +13,8 @@ export const selectAllPokemons = createSelector(
   selectPokemonsState,
   (state) => state.pokemons
 );
+
+export const selectIsPokemonsLoaded = createSelector(
+  selectPokemonsState,
+  (state) => !state.loading
+);

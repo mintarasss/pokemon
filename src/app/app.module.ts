@@ -12,6 +12,11 @@ import {HttpClientModule} from "@angular/common/http";
 import {appReducer, pokemonFeatureKey} from "./store/reducers";
 import {TypeElementColorPipe} from "./pokemon-list/card/pipes/type-element-color.pipe";
 import {PokemonNumberPipe} from "./pokemon-list/card/pipes/pokemon-number.pipe";
+import { SearchComponent } from './pokemon-list/search/search.component';
+import {FormsModule} from "@angular/forms";
+import {SearchPokemonPipe} from "./pokemon-list/pipes/search-pokemon.pipe";
+import { SortComponent } from './pokemon-list/sort/sort.component';
+import {SortPokemonPipe} from "./pokemon-list/pipes/sort-pokemon.pipe";
 
 @NgModule({
   declarations: [
@@ -20,6 +25,10 @@ import {PokemonNumberPipe} from "./pokemon-list/card/pipes/pokemon-number.pipe";
     CardComponent,
     TypeElementColorPipe,
     PokemonNumberPipe,
+    SearchComponent,
+    SearchPokemonPipe,
+    SortComponent,
+    SortPokemonPipe
   ],
   imports: [
     BrowserModule,
@@ -29,6 +38,7 @@ import {PokemonNumberPipe} from "./pokemon-list/card/pipes/pokemon-number.pipe";
     EffectsModule.forRoot([]),
     StoreModule.forFeature(pokemonFeatureKey, appReducer),
     EffectsModule.forFeature([PokemonEffects]),
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
