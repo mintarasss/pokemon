@@ -1,0 +1,11 @@
+<div class="pokemon">
+  <span class="number" [ngStyle]="{'background-color': data.types[0].type.name | typeElementColor}">#{{data.id | pokemonNumber}}</span>
+  <div class="img-container" [ngStyle]="{'background-color': data.types[0].type.name | typeElementColor}">
+    <img [attr.src]="data.sprites.front_default" alt="">
+  </div>
+  <div class="info">
+
+    <h3 class="name">{{data.name | uppercase}}</h3>
+    <small class="type">type: <span>{{data.types[0].type.name}}</span></small>
+  </div>
+</div>
