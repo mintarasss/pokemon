@@ -17,6 +17,8 @@ import {FormsModule} from "@angular/forms";
 import {SearchPokemonPipe} from "./pokemon-list/pipes/search-pokemon.pipe";
 import { SortComponent } from './pokemon-list/sort/sort.component';
 import {SortPokemonPipe} from "./pokemon-list/pipes/sort-pokemon.pipe";
+import { NewPokemonFormComponent } from './new-pokemon-form/new-pokemon-form.component';
+import { ValidTypeDirective } from './validators/valid-type.directive';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import {SortPokemonPipe} from "./pokemon-list/pipes/sort-pokemon.pipe";
     SearchComponent,
     SearchPokemonPipe,
     SortComponent,
-    SortPokemonPipe
+    SortPokemonPipe,
+    NewPokemonFormComponent,
+    ValidTypeDirective
   ],
   imports: [
     BrowserModule,
