@@ -7,7 +7,8 @@ import {ValidationErrors} from "@angular/forms";
 export class ErrorMessagePipe implements PipeTransform {
   readonly errorMessages: { [key: string]: string } = {
     required: 'Input is required',
-    invalidColor: 'Invalid type select'
+    invalidColor: 'Invalid type select',
+    idInList: 'ID is already in use'
   }
 
   transform(value: ValidationErrors | null | undefined): string | undefined {

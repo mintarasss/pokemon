@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Pokemon} from "../data/types";
 import {colors} from "../data/const";
 import {validateType} from "../validators/valid-type.validator";
+import {idNotInListValidator} from "../validators/not-in-list.validator";
 
 type FormFields = { name: string; id: number; type: string; imageLink: string; };
 
@@ -26,6 +27,7 @@ export class NewPokemonFormComponent {
   onSubmit(): void {
     this.list.push(this.makePokemon(this.pokemonForm.value as Partial<FormFields>));
     this.pokemonForm.reset();
+    this.updateFormIdValidator();
   }
 
   onTakeALook(): void {
@@ -48,5 +50,12 @@ export class NewPokemonFormComponent {
       name: new FormControl('', [Validators.required]),
       imageLink: new FormControl('', [Validators.required]),
     })
+  }
+
+  private updateFormIdValidator() {
+    this.pokemonForm.get('id')?.setValidators([
+      Validators.required,
+      idNotInListValidator(this.list)
+    ]);
   }
 }
