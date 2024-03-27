@@ -1,24 +1,26 @@
 <div class="container">
   <div class="left-side">
-    <form #pokemonForm="ngForm" (ngSubmit)="onSubmit(pokemonForm)">
+    <form [formGroup]="pokemonForm" (ngSubmit)="onSubmit()">
       <div>
         <label for="id">ID:</label>
-        <input type="number" id="id" name="id" ngModel required>
+        <input type="number" id="id" formControlName="id">
       </div>
       <div>
         <label for="type">Type:</label>
-        <input #type="ngModel" type="text" id="type" name="type" ngModel appValidType required>
-        @if (type.invalid && type.dirty) {
-          <div class="error">There is no type like this</div>
+        <input type="text" id="type" formControlName="type">
+        @if (pokemonForm.get('type')?.invalid && pokemonForm.get('type')?.dirty) {
+          <div class="error">
+            There is no type like this
+          </div>
         }
       </div>
       <div>
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" ngModel required>
+        <input type="text" id="name" formControlName="name">
       </div>
       <div>
         <label for="imageLink">Image Link:</label>
-        <input type="url" id="imageLink" name="imageLink" ngModel required>
+        <input type="url" id="imageLink" formControlName="imageLink">
       </div>
       <br/>
       <pre> {{ pokemonForm.value | json }} </pre>
