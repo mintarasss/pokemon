@@ -19,14 +19,20 @@ export class NewPokemonFormComponent {
     imageLink: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png'
   });
 
+  list: Pokemon[] = [];
+
   pokemonForm = this.crateForm();
 
   onSubmit(): void {
-    console.log('Form Data: ', this.pokemonForm.value);
+    this.list.push(this.makePokemon(this.pokemonForm.value as Partial<FormFields>));
+    this.pokemonForm.reset();
+  }
+
+  onTakeALook(): void {
     this.examplePokemon = this.makePokemon(this.pokemonForm.value as Partial<FormFields>);
   }
 
-  makePokemon({name, id, type, imageLink}: Partial<FormFields>): Pokemon {
+  private makePokemon({name, id, type, imageLink}: Partial<FormFields>): Pokemon {
     return {
       id: id || 0,
       name: name || '',

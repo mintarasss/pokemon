@@ -24,10 +24,16 @@
       <br/>
       <pre> {{ pokemonForm.value | json }} </pre>
       <br/>
-      <button type="submit" [disabled]="!pokemonForm.valid">Take a look</button>
+      <button type="button" [disabled]="!pokemonForm.valid" (click)="onTakeALook()">Take a look</button>
+      <button type="submit" [disabled]="!pokemonForm.valid">Add to list</button>
     </form>
   </div>
   <div class="right-side">
     <app-card [data]="examplePokemon"/>
+    <br/>
+    <h3>Pokemon List:</h3>
+    @for (pokemon of list; track $index) {
+      <app-card [data]="pokemon"/>
+    }
   </div>
 </div>
