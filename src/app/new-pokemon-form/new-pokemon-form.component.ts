@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {Pokemon} from "../data/types";
+import {colors} from "../data/const";
 
 type FormFields = { name: string, id: number, type: string, imageLink: string }
 
@@ -21,12 +22,12 @@ export class NewPokemonFormComponent {
     this.examplePokemon = this.makePokemon(form.value);
   }
 
-  makePokemon({name, id, type, imageLink}: FormFields) {
+  makePokemon({name, id, type, imageLink}: FormFields): Pokemon {
     return {
-      id: id || 0,
-      types: [{type: {name: type}}],
+      id,
+      name,
+      types: [{type: {name: type as keyof typeof colors}}],
       sprites: {front_default: imageLink},
-      name: name
-    } as Pokemon;
+    };
   }
 }

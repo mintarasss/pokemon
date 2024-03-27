@@ -1,11 +1,11 @@
 @if (isLoaded()) {
   <app-search (searchChange)="handleSearchChange($event)"/>
-  <app-sort (sortCriteriaChanged)="handleSortChange($event)" />
+  <app-sort (sortCriteriaChanged)="handleSortChange($event)"/>
   <section class="list">
     @for (pokemon of pokemons() | searchPokemon : searchQuery | sortPokemon: sortKey; track pokemon.id) {
       <app-card [data]="pokemon"/>
     } @empty {
-      Empty list :(
+      <h3>Empty list :(</h3>
     }
   </section>
 } @else {
