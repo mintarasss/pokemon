@@ -4,23 +4,22 @@
       <div>
         <label for="id">ID:</label>
         <input type="number" id="id" formControlName="id">
+        <app-error-handler [control]="pokemonForm.get('id')"/>
       </div>
       <div>
         <label for="type">Type:</label>
         <input type="text" id="type" formControlName="type">
-        @if (pokemonForm.get('type')?.invalid && pokemonForm.get('type')?.dirty) {
-          <div class="error">
-            There is no type like this
-          </div>
-        }
+        <app-error-handler [control]="pokemonForm.get('type')"/>
       </div>
       <div>
         <label for="name">Name:</label>
         <input type="text" id="name" formControlName="name">
+        <app-error-handler [control]="pokemonForm.get('name')"/>
       </div>
       <div>
         <label for="imageLink">Image Link:</label>
         <input type="url" id="imageLink" formControlName="imageLink">
+        <app-error-handler [control]="pokemonForm.get('imageLink')"/>
       </div>
       <br/>
       <pre> {{ pokemonForm.value | json }} </pre>

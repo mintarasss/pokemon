@@ -17,6 +17,8 @@ import {SearchPokemonPipe} from "./pokemon-list/pipes/search-pokemon.pipe";
 import {SortComponent} from './pokemon-list/sort/sort.component';
 import {SortPokemonPipe} from "./pokemon-list/pipes/sort-pokemon.pipe";
 import {NewPokemonFormComponent} from './new-pokemon-form/new-pokemon-form.component';
+import { ErrorHandlerComponent } from './error-handler/error-handler.component';
+import { ErrorMessagePipe } from './error-handler/error-message.pipe';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import {NewPokemonFormComponent} from './new-pokemon-form/new-pokemon-form.compo
     SortComponent,
     SortPokemonPipe,
     NewPokemonFormComponent,
+    ErrorHandlerComponent,
+    ErrorMessagePipe,
   ],
   imports: [
     BrowserModule,
