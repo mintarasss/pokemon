@@ -1,9 +1,6 @@
 <form>
   <input type="text"
-         [(ngModel)]="searchQuery"
-         (ngModelChange)="onSearchChange()"
-         name="search"
-         placeholder="search"
-  >
+         [formControl]="searchQuery"
+         placeholder="search">
   <span class="search-icon">🔍</span>
 </form>

@@ -1,4 +1,6 @@
 import {Component, EventEmitter, Output} from '@angular/core';
+import {FormControl} from '@angular/forms';
+import {map} from "rxjs";
 
 @Component({
   selector: 'app-search',
@@ -8,9 +10,11 @@ import {Component, EventEmitter, Output} from '@angular/core';
 export class SearchComponent {
   @Output() searchChange = new EventEmitter<string>();
 
-  searchQuery: string = '';
+  searchQuery = new FormControl('');
 
-  onSearchChange(): void {
-    this.searchChange.emit(this.searchQuery);
+  constructor() {
+    this.searchQuery.valueChanges.pipe(map(data => data || '')).subscribe((value: string) => {
+      this.searchChange.emit(value);
+    });
   }
 }

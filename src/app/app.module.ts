@@ -12,7 +12,7 @@ import {appReducer, pokemonFeatureKey} from "./store/reducers";
 import {TypeElementColorPipe} from "./pokemon-list/card/pipes/type-element-color.pipe";
 import {PokemonNumberPipe} from "./pokemon-list/card/pipes/pokemon-number.pipe";
 import {SearchComponent} from './pokemon-list/search/search.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SearchPokemonPipe} from "./pokemon-list/pipes/search-pokemon.pipe";
 import {SortComponent} from './pokemon-list/sort/sort.component';
 import {SortPokemonPipe} from "./pokemon-list/pipes/sort-pokemon.pipe";
@@ -41,7 +41,9 @@ import {ValidTypeDirective} from './validators/valid-type.directive';
     EffectsModule.forRoot([]),
     StoreModule.forFeature(pokemonFeatureKey, appReducer),
     EffectsModule.forFeature([PokemonEffects]),
+    //@todo:remove after refactoring
     FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
