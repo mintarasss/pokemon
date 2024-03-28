@@ -4,6 +4,7 @@ import {Pokemon} from "../data/types";
 import {colors} from "../data/const";
 import {validateType} from "../validators/valid-type.validator";
 import {idNotInListValidator} from "../validators/not-in-list.validator";
+import {nameTypeValidator} from "../validators/nameType.validator";
 
 type FormFields = { name: string; id: number; type: string; imageLink: string; };
 
@@ -49,7 +50,7 @@ export class NewPokemonFormComponent {
       type: new FormControl('', [Validators.required, validateType()]),
       name: new FormControl('', [Validators.required]),
       imageLink: new FormControl('', [Validators.required]),
-    })
+    }, {validators: [nameTypeValidator()]})
   }
 
   private updateFormIdValidator() {
