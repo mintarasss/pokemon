@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="left-side">
+    <form [formGroup]="pokemonForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="id">ID:</label>
+        <input type="number" id="id" formControlName="id">
+        <app-error-handler [control]="pokemonForm.get('id')"/>
+      </div>
+      <div>
+        <label for="type">Type:</label>
+        <input type="text" id="type" formControlName="type">
+        <app-error-handler [control]="pokemonForm.get('type')"/>
+      </div>
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" formControlName="name">
+        <app-error-handler [control]="pokemonForm.get('name')"/>
+      </div>
+      <div>
+        <label for="imageLink">Image Link:</label>
+        <input type="url" id="imageLink" formControlName="imageLink">
+        <app-error-handler [control]="pokemonForm.get('imageLink')"/>
+      </div>
+      <br/>
+      <pre> {{ pokemonForm.value | json }} </pre>
+      <br/>
+      <button type="button" [disabled]="!pokemonForm.valid" (click)="onTakeALook()">Take a look</button>
+      <button type="submit" [disabled]="!pokemonForm.valid">Add to list</button>
+    </form>
+  </div>
+  <div class="right-side">
+    <app-card [data]="examplePokemon"/>
+    <br/>
+    <h3>Pokemon List:</h3>
+    @for (pokemon of list; track $index) {
+      <app-card [data]="pokemon"/>
+    }
+  </div>
+</div>

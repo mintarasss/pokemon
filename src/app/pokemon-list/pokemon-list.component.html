@@ -1,5 +1,13 @@
-@for (pokemon of pokemons(); track pokemon.id){
-  <app-card [data]="pokemon" />
-} @empty {
-  Loading...
+@if (isLoaded()) {
+  <app-search (searchChange)="handleSearchChange($event)"/>
+  <app-sort (sortCriteriaChanged)="handleSortChange($event)"/>
+  <section class="list">
+    @for (pokemon of pokemons() | searchPokemon : searchQuery | sortPokemon: sortKey; track pokemon.id) {
+      <app-card [data]="pokemon"/>
+    } @empty {
+      <h3>Empty list :(</h3>
+    }
+  </section>
+} @else {
+  <h3>Loading...</h3>
 }
