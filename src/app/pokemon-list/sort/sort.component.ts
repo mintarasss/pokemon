@@ -1,15 +1,18 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { SortKeys } from "../../data/types";
+import {ChangeDetectionStrategy, Component, EventEmitter, output, Output} from '@angular/core';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {SortKeys} from "../../data/types";
 import {filter} from "rxjs";
 
 @Component({
   selector: 'app-sort',
+  standalone: true,
+  imports: [ReactiveFormsModule],
   templateUrl: './sort.component.html',
-  styleUrls: ['./sort.component.css']
+  styleUrls: ['./sort.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SortComponent {
-  @Output() sortCriteriaChanged: EventEmitter<SortKeys> = new EventEmitter();
+  sortCriteriaChanged = output<SortKeys>();
   sortOption = new FormControl<SortKeys>('id');
 
   constructor() {

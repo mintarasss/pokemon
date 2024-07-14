@@ -6,6 +6,7 @@ export const pokemonFeatureKey = 'pokemonFeatureKey';
 export interface AppState {
   pokemonsState: PokemonState;
 }
-export const appReducer:ActionReducerMap<AppState> = {
+
+export const appReducer: ActionReducerMap<AppState> = {
   pokemonsState: pokemonReducer
 }

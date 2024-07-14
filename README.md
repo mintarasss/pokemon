@@ -1,9 +1,8 @@
 # Pokemons
 
-This project was generated with Angular CLI version 17.3.2.
+This project was generated with Angular CLI version 18.1.0.
 
-This is an example project for students to learn more about reactive and template-driven forms. There are a few TDF and RF branches with changes where you can see the difference between them and code along.
-
+This is a Pokemon Angular demo app for beginners. It is designed to help students learn more about reactive and template-driven forms. There are a few TDF and RF branches with changes where you can see the difference between them and code along.
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.

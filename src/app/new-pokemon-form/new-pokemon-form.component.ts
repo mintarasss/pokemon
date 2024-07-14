@@ -1,17 +1,23 @@
-import {Component} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Pokemon} from "../data/types";
 import {colors} from "../data/const";
 import {validateType} from "../validators/valid-type.validator";
 import {idNotInListValidator} from "../validators/not-in-list.validator";
-import {nameTypeValidator} from "../validators/nameType.validator";
+import {ErrorHandlerComponent} from "../error-handler/error-handler.component";
+import {CardComponent} from "../pokemon-list/card/card.component";
+import {JsonPipe} from "@angular/common";
+import {nameTypeValidator} from "../validators/name-type.validator";
 
 type FormFields = { name: string; id: number; type: string; imageLink: string; };
 
 @Component({
   selector: 'app-new-pokemon-form',
+  standalone: true,
+  imports: [ReactiveFormsModule, ErrorHandlerComponent, CardComponent, JsonPipe],
   templateUrl: './new-pokemon-form.component.html',
-  styleUrl: './new-pokemon-form.component.css'
+  styleUrl: './new-pokemon-form.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NewPokemonFormComponent {
   examplePokemon = this.makePokemon({

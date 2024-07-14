@@ -1,5 +1,6 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import {createFeatureSelector, createSelector} from '@ngrx/store';
 import {AppState, pokemonFeatureKey} from "../reducers";
+import {PokemonState} from "../reducers/pokemon.reducer";
 
 
 export const selectState = createFeatureSelector<AppState>(pokemonFeatureKey);
@@ -11,10 +12,10 @@ export const selectPokemonsState = createSelector(
 
 export const selectAllPokemons = createSelector(
   selectPokemonsState,
-  (state) => state.pokemons
+  (state: PokemonState) => state.pokemons
 );
 
 export const selectIsPokemonsLoaded = createSelector(
   selectPokemonsState,
-  (state) => !state.loading
+  (state: PokemonState) => !state.loading
 );

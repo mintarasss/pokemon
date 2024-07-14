@@ -1,4 +1,4 @@
-import { createReducer, on } from '@ngrx/store';
+import {createReducer, on} from '@ngrx/store';
 import {loadPokemons, loadPokemonsFailure, loadPokemonsSuccess} from "../actions/pokemon.actions";
 import {Pokemon} from "../../data/types";
 

@@ -1,15 +1,17 @@
-import {Component, EventEmitter, Output} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {ChangeDetectionStrategy, Component, EventEmitter, output, Output} from '@angular/core';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {map} from "rxjs";
 
 @Component({
   selector: 'app-search',
+  standalone: true,
+  imports: [ReactiveFormsModule],
   templateUrl: './search.component.html',
-  styleUrl: './search.component.css'
+  styleUrl: './search.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchComponent {
-  @Output() searchChange = new EventEmitter<string>();
-
+  searchChange = output<string>();
   searchQuery = new FormControl('');
 
   constructor() {

@@ -1,3 +1,3 @@
-@if (control?.invalid && control?.dirty) {
-  {{ (control?.errors | errorMessage) || 'Invalid field' }}
+@if (control()?.invalid && control()?.dirty) {
+  {{ (control()?.errors | errorMessage) || 'Invalid field' }}
 }
