@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Pokemon} from "../data/types";
 import {colors} from "../data/const";
@@ -8,6 +8,7 @@ import {ErrorHandlerComponent} from "../error-handler/error-handler.component";
 import {CardComponent} from "../pokemon-list/card/card.component";
 import {JsonPipe} from "@angular/common";
 import {nameTypeValidator} from "../validators/name-type.validator";
+import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 
 type FormFields = { name: string; id: number; type: string; imageLink: string; };
 
@@ -26,10 +27,14 @@ export class NewPokemonFormComponent {
     type: 'electric',
     imageLink: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png'
   });
-
   list: Pokemon[] = [];
-
   pokemonForm = this.crateForm();
+
+  constructor(private cdRef: ChangeDetectorRef) {
+    this.pokemonForm.valueChanges.pipe(takeUntilDestroyed()).subscribe(() => {
+      this.cdRef.markForCheck()
+    })
+  }
 
   onSubmit(): void {
     this.list.push(this.makePokemon(this.pokemonForm.value as Partial<FormFields>));
